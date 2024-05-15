@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Registration</title>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/lightslider.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/lightslider.js"></script>
+    <script src="../static/js/script.js"></script>
+
+    <style>
+        body{
+            background-image: url("../static/images/admin.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+
+ <link rel="icon" href="../static/images/favicon.jpg">
+</head>
+<body>
+    <div class="container-fluid">
+        {% include 'navbar.html' %}
+        <section class="row">
+         <h2 class="text-info">Create Admin Account</h2>
+
+         <span class="text-white">{{ message }}</span>
+         <span class="text-danger">{{ error }}</span>
+         <div class="col-md-4">
+            <form action="/adminregister" method="post" class="bg-info">
+            <input type="text" name="username" placeholder="Enter your username" class="form-control" required> <br>
+            <input type="email" name="email" placeholder="Enter your email" class="form-control" required> <br>
+            <input type="password" name="password" placeholder="Enter your password" class="form-control" required> <br>
+            <input type="password" name="password2" placeholder="Confirm your password" class="form-control" required> <br>
+
+            <input type="submit" value="Add Admin" class="btn btn-primary"> <br>
+            <a href="/adminlogin">Already have an account? Login here</a>
+            </form>
+         </div>
+        </section>
+    </div>
+</body>
+</html>

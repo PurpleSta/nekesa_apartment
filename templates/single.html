@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single</title>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/lightslider.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/lightslider.js"></script>
+    <script src="../static/js/script.js"></script>
+
+    <style>
+        body{
+            background-color: beige;
+        }
+    </style>
+
+    <link rel="icon" href="../static/images/favicon.jpg">
+</head>
+<body>
+    <div class="container-fluid">
+        {% include 'navbar.html' %}
+        <section class="row">
+            <div class="col-md-4">
+                <img src="/static/images/{{ house[3] }}" class="img-thumbnail p-4" alt="">
+                <h2>{{ house[0] }}</h2>
+
+            </div>
+
+            <div class="col-md-4">
+                <p class="text-muted">{{ house[0] }}</p>
+                <h4>KES {{ house[1] }}</h4>
+                <b class="text-warning">House_type: {{ house[2] }}</b>
+                {% if session['key'] %}
+                    <form action="/mpesa" method="post">
+                        <input type="number" placeholder="Enter Mpesa number 2547xxxxxxxx" name="phone" class="form-control">
+                        <label for="">To pay</label>
+                        <input type="number" class="form-control" name="amount" readonly value="{{ house[1] }}">
+                        <br>
+                        <input type="submit" class="btn btn-dark">
+                    </form>
+                 {% else %}
+                    <h3>Please login to make payment</h3>
+                    <a href="/login" class="btn btn-dark">Login here</a>
+                {% endif %}
+            </div>
+        </section>
+
+        {% include 'footer.html' %}
+    </div>
+</body>
+</html>

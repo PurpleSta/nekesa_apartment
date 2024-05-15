@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/lightslider.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/lightslider.js"></script>
+    <script src="../static/js/script.js"></script>
+
+    <style>
+        body{
+            background-image: url("../static/images/reg.jpg");
+            background-size: cover;
+        }
+    </style>
+
+    <link rel="icon" href="../static/images/favicon.jpg">
+
+</head>
+<body>
+    
+        <div class="container-fluid">
+            {% include 'navbar.html'%}
+            <section class="row">
+            <div class="col-md-4">
+            <h2><b>Register account</b></h2>
+            
+                <span class="text-success">{{ message }}</span>
+                <span class="text-danger">{{ error }}</span>
+
+            <form action="/register" method="post" class="bg-warning">
+                <input type="text" placeholder="Enter your username" class="form-control" name="username" required> <br>
+                <input type="email" placeholder="Enter your email" class="form-control" name="email" required> <br>
+                <input type="number" placeholder="Enter your ID number" class="form-control" name="id_number" required> <br>
+                <input type="tel" placeholder="Enter your phone number" class="form-control" name="telephone" required> <br>
+                <input type="password" placeholder="Input your password" class="form-control" name="password" required> <br>
+                <input type="password" placeholder="Confirm your password" class="form-control" name="password2" required> <br>
+    
+                <input type="submit" value="Register" class="btn btn-info"> <br>
+                <a href="/login">Already have an account? Login here.</a>
+            </form>
+        </div>
+    </section>
+        </div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony Heights Apartments</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/lightslider.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/lightslider.js"></script>
+    <script src="../static/js/script.js"></script>
+
+    <style>
+        .scrolling-wrapper{
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
+        }
+    </style>
+
+    <link rel="icon" href="../static/images/favicon.jpg">
+    
+</head>
+<body>
+    <div class="container-fluid">
+        {% include 'navbar.html' %}
+        {% include 'carousel.html' %} 
+
+        <br> <br>
+
+        <h2 class="text-white text-centre bg-primary p-2">Singles</h2>
+        <section class="slider p-4">
+            <div class="scrolling-wrapper">
+                {% for item in singles %}
+                    <div class="box col-md-3" style="display: inline-block;">
+                         <div class="slide-img">
+                            <img src="../static/images/{{ item[3] }}" height="250" width="250" alt="">
+                            <div class="overlay">
+                                <a href="/single/{{ item[0] }}" class="bu
+                                y-btn">Rent Now</a>
+                            </div>
+                         </div>
+                         <div class="detail-box">
+                            <b class="text-warning">KES {{ item[1] }}</b>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </section> <br>
+
+       
+        <h2 class="text-white text-centre bg-primary p-2">Bedsitters</h2>
+        <section class="slider p-4">
+            <div class="scrolling-wrapper">
+                {% for item in bedsitters %}
+                    <div class="box col-md-3" style="display: inline-block;">
+                         <div class="slide-img">
+                            <img src="../static/images/{{ item[3] }}" height="250" width="250" alt="">
+                            <div class="overlay">
+                                <a href="/single/{{ item[0] }}" class="buy-btn">Rent Now</a>
+                            </div>
+                         </div>
+                         <div class="detail-box">
+                            <b class="text-warning">KES {{ item[1] }}</b>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </section> <br>
+
+        
+        <h2 class="text-white text-centre bg-primary p-2">One Bedroom</h2>
+        <section class="slider p-4">
+            <div class="scrolling-wrapper">
+                {% for item in one_bedroom %}
+                    <div class="box col-md-3" style="display: inline-block;">
+                         <div class="slide-img">
+                            <img src="../static/images/{{ item[3] }}" height="250" width="250" alt="">
+                            <div class="overlay">
+                                <a href="/single/{{ item[0] }}" class="buy-btn">Rent Now</a>
+                            </div>
+                         </div>
+                         <div class="detail-box">
+                            <b class="text-warning">KES {{ item[1] }}</b>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </section> <br>
+
+
+       
+        <h2 class="text-white text-centre bg-primary p-2">Two Bedroom</h2>
+        <section class="slider p-4">
+            <div class="scrolling-wrapper">
+                {% for item in two_bedroom %}
+                    <div class="box col-md-3" style="display: inline-block;">
+                         <div class="slide-img">
+                            <img src="../static/images/{{ item[3] }}" height="250" width="250" alt="">
+                            <div class="overlay">
+                                <a href="/single/{{ item[0] }}" class="buy-btn">Rent Now</a>
+                            </div>
+                         </div>
+                         <div class="detail-box">
+                            <b class="text-warning">KES {{ item[1] }}</b>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </section> <br>
+
+       
+        <h2 class="text-white text-centre bg-primary p-2">Three Bedroom</h2>
+        <section class="slider p-4">
+            <div class="scrolling-wrapper">
+                {% for item in three_bedroom %}
+                    <div class="box col-md-3" style="display: inline-block;">
+                         <div class="slide-img">
+                            <img src="../static/images/{{ item[3] }}" height="250" width="250" alt="">
+                            <div class="overlay">
+                                <a href="/single/{{ item[0] }}" class="buy-btn">Rent Now</a>
+                            </div>
+                         </div>
+                         <div class="detail-box">
+                            <b class="text-warning">KES {{ item[1] }}</b>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </section> <br>
+
+        {% include 'footer.html' %}
+    </div>
+</body>
+</html>

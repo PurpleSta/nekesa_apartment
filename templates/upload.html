@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/lightslider.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/lightslider.js"></script>
+    <script src="../static/js/script.js"></script> 
+
+    <style>
+        body{
+            background-image: url("../static/images/up.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            backface-visibility: visible;
+        } 
+    </style>
+
+    <link rel="icon" href="../static/images/favicon.jpg">
+
+</head>
+<body>
+    <div class="container-fluid">
+
+        {% include 'navbar.html' %}
+        <section class="row">
+            <div class="col-md-6">
+                <div class="card-show p-2">
+                    <h5 class="m-2">{{ message }}</h5>
+                    <form action="/upload" method="post" enctype="multipart/form-data">
+                        <label for="">House Number</label>
+                        <input type="text" name="house_number" class="form-control" required> <br>
+
+                        <label for="">Rent Amount</label>
+                        <input type="number" name="rent_amount" class="form-control" required> <br>
+
+                        <label for="">House Type</label>
+                        <select name="house_type" class="form-control" required id="">
+                            <option value="" class="form-control">...Select house type...</option>
+                            <option value="singles">Single</option>
+                            <option value="Bedsitters">Bedsitters</option>
+                            <option value="one_bedroom">One Bedroom</option>
+                            <option value="two_bedroom">Two Bedroom</option>
+                            <option value="three_bedroom">Three Bedroom</option>
+                        </select> <br>
+
+                        <label for="">House Image</label>
+                        <input type="file" name="house_image" class="form-control" required> <br>
+
+                        <input type="submit" value="Upload house" class="btn btn-info">
+                        
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
