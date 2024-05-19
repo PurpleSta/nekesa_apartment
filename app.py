@@ -3,7 +3,9 @@ import pymysql
 import mpesa
 from functions import *
 # from werkzeug.utils import secure_filename
-# import os
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 
 app = Flask(__name__)
@@ -22,7 +24,14 @@ app.secret_key = "dkdinmartparcfddwedgf"
 
 @app.route('/')
 def home():
-    connection = pymysql.connect(host='localhost', user='root', password='', database='nekesa_rental')
+    
+    connection = pymysql.connect(
+    host = os.getenv('DB_HOST'),
+    user = os.getenv('DB_USER'),
+    password = os.getenv('DB_PASSWORD'),
+    database = os.getenv('DB_NAME')
+    )
+    
     cursor = connection.cursor()
     sql1 = "select * from house_details where house_type = %s"
     cursor.execute(sql1, "singles")
@@ -62,7 +71,13 @@ def upload():
 
         house_image_name = house_image.filename
 
-        connection = pymysql.connect(host='localhost', user='root', password='', database='nekesa_rental')
+        connection = pymysql.connect(
+        host = os.getenv('DB_HOST'),
+        user = os.getenv('DB_USER'),
+        password = os.getenv('DB_PASSWORD'),
+        database = os.getenv('DB_NAME')
+        )
+
         cursor = connection.cursor()
         sql = "insert into house_details (house_number, rent_amount, house_type, house_image_name) values(%s, %s, %s, %s)"
         cursor.execute(sql, (house_number, rent_amount, house_type, house_image_name))
@@ -73,7 +88,13 @@ def upload():
 
 @app.route('/single/<house_number>')
 def single(house_number):
-    connection = pymysql.connect(host='localhost', user='root', password='', database='nekesa_rental')
+    connection = pymysql.connect(
+    host = os.getenv('DB_HOST'),
+    user = os.getenv('DB_USER'),
+    password = os.getenv('DB_PASSWORD'),
+    database = os.getenv('DB_NAME')
+    )
+   
     cursor = connection.cursor()
     sql = "select * from house_details where house_number = %s"
     cursor.execute(sql, house_number)
@@ -121,7 +142,13 @@ def adminregister():
         elif password != password2:
             return render_template("adminregister.html", error = "Passwords do not match")
         else:
-            connection = pymysql.connect(host='localhost', user='root', password='', database='nekesa_rental')
+            connection = pymysql.connect(
+            host = os.getenv('DB_HOST'),
+            user = os.getenv('DB_USER'),
+            password = os.getenv('DB_PASSWORD'),
+            database = os.getenv('DB_NAME')
+            )
+
             cursor = connection.cursor()
             sql = "insert into admin (username, email, password) values(%s, %s, %s)"
             cursor.execute(sql, (username, email, hashed_password))
@@ -138,7 +165,13 @@ def adminlogin():
         password = request.form["password"]
         hashed_password = hash_salt_password(password)
 
-        connection = pymysql.connect(host='localhost', user='root', password='', database='nekesa_rental')
+        connection = pymysql.connect(
+        host = os.getenv('DB_HOST'),
+        user = os.getenv('DB_USER'),
+        password = os.getenv('DB_PASSWORD'),
+        database = os.getenv('DB_NAME')
+        )
+
         cursor = connection.cursor()
         sql = "select * from admin where username = %s and password = %s"
         cursor.execute(sql, (username, hashed_password))
@@ -168,7 +201,13 @@ def register():
         elif password != password2:
             return render_template("register.html", error = "passwords do not match")
         else:
-            connection = pymysql.connect(host='localhost', user='root', password='', database='nekesa_rental')
+            connection = pymysql.connect(
+            host = os.getenv('DB_HOST'),
+            user = os.getenv('DB_USER'),
+            password = os.getenv('DB_PASSWORD'),
+            database = os.getenv('DB_NAME')
+            )
+
             cursor = connection.cursor()
 
             sql = "insert into users(username, email, id_number, telephone, password) values(%s,%s,%s,%s,%s)"
@@ -187,7 +226,13 @@ def login():
         password = request.form["password"]
         hashed_password = hash_salt_password(password)
 
-        connection = pymysql.connect(host='localhost', user='root', password='', database='nekesa_rental')
+        connection = pymysql.connect(
+        host = os.getenv('DB_HOST'),
+        user = os.getenv('DB_USER'),
+        password = os.getenv('DB_PASSWORD'),
+        database = os.getenv('DB_NAME')
+        )
+
         cursor = connection.cursor()
         sql = "select * from users where username = %s and password = %s"
         cursor.execute(sql, (username, hashed_password))
